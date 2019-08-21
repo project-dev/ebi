@@ -232,6 +232,8 @@ namespace Ebi
                     {
                         // name1の描画
                         graph.DrawString(name1, nameFont, brush, 1000, 64 + 200, sf);
+
+                        // 様の描画が必要
                     }
                     else
                     {
@@ -246,6 +248,7 @@ namespace Ebi
                         // name2の描画
                         graph.DrawString(name2, nameFont, brush, 600, name2Top, sf);
 
+                        // 様の描画が必要
                     }
                 }
 
