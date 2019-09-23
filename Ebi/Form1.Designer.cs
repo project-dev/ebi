@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.previewBox = new System.Windows.Forms.PictureBox();
             this.menuImportExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.previewBox = new System.Windows.Forms.PictureBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.rightPanel = new System.Windows.Forms.Panel();
+            this.btnAllClear = new System.Windows.Forms.Button();
+            this.btnAllSelect = new System.Windows.Forms.Button();
             this.mainStatusBar = new System.Windows.Forms.StatusStrip();
             this.xlsOpenDlg = new System.Windows.Forms.OpenFileDialog();
-            this.btnAllSelect = new System.Windows.Forms.Button();
-            this.btnAllClear = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -68,6 +69,25 @@
             this.menuFile.Size = new System.Drawing.Size(67, 20);
             this.menuFile.Text = "ファイル(&F)";
             // 
+            // menuImportExcel
+            // 
+            this.menuImportExcel.Name = "menuImportExcel";
+            this.menuImportExcel.Size = new System.Drawing.Size(163, 22);
+            this.menuImportExcel.Text = "Excelを取り込む(&I)";
+            this.menuImportExcel.Click += new System.EventHandler(this.MenuImportExcel_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 6);
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(163, 22);
+            this.menuExit.Text = "終了(&X)";
+            this.menuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            // 
             // menuPrint
             // 
             this.menuPrint.Name = "menuPrint";
@@ -85,25 +105,6 @@
             this.previewBox.TabIndex = 1;
             this.previewBox.TabStop = false;
             this.previewBox.Click += new System.EventHandler(this.PreviewBox_Click);
-            // 
-            // menuImportExcel
-            // 
-            this.menuImportExcel.Name = "menuImportExcel";
-            this.menuImportExcel.Size = new System.Drawing.Size(180, 22);
-            this.menuImportExcel.Text = "Excelを取り込む(&I)";
-            this.menuImportExcel.Click += new System.EventHandler(this.MenuImportExcel_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // menuExit
-            // 
-            this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(180, 22);
-            this.menuExit.Text = "終了(&X)";
-            this.menuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
             // dataGrid
             // 
@@ -129,6 +130,26 @@
             this.rightPanel.Size = new System.Drawing.Size(617, 587);
             this.rightPanel.TabIndex = 3;
             // 
+            // btnAllClear
+            // 
+            this.btnAllClear.Location = new System.Drawing.Point(84, 3);
+            this.btnAllClear.Name = "btnAllClear";
+            this.btnAllClear.Size = new System.Drawing.Size(75, 23);
+            this.btnAllClear.TabIndex = 4;
+            this.btnAllClear.Text = "すべてクリア";
+            this.btnAllClear.UseVisualStyleBackColor = true;
+            this.btnAllClear.Click += new System.EventHandler(this.BtnAllClear_Click);
+            // 
+            // btnAllSelect
+            // 
+            this.btnAllSelect.Location = new System.Drawing.Point(3, 3);
+            this.btnAllSelect.Name = "btnAllSelect";
+            this.btnAllSelect.Size = new System.Drawing.Size(75, 23);
+            this.btnAllSelect.TabIndex = 3;
+            this.btnAllSelect.Text = "すべて選択";
+            this.btnAllSelect.UseVisualStyleBackColor = true;
+            this.btnAllSelect.Click += new System.EventHandler(this.BtnAllSelect_Click);
+            // 
             // mainStatusBar
             // 
             this.mainStatusBar.Location = new System.Drawing.Point(0, 617);
@@ -142,26 +163,6 @@
             this.xlsOpenDlg.DefaultExt = "xlsx";
             this.xlsOpenDlg.Filter = "Excel|*.xlsx|古いExcel|*.xls|すべて|*.*";
             // 
-            // btnAllSelect
-            // 
-            this.btnAllSelect.Location = new System.Drawing.Point(3, 3);
-            this.btnAllSelect.Name = "btnAllSelect";
-            this.btnAllSelect.Size = new System.Drawing.Size(75, 23);
-            this.btnAllSelect.TabIndex = 3;
-            this.btnAllSelect.Text = "すべて選択";
-            this.btnAllSelect.UseVisualStyleBackColor = true;
-            this.btnAllSelect.Click += new System.EventHandler(this.BtnAllSelect_Click);
-            // 
-            // btnAllClear
-            // 
-            this.btnAllClear.Location = new System.Drawing.Point(84, 3);
-            this.btnAllClear.Name = "btnAllClear";
-            this.btnAllClear.Size = new System.Drawing.Size(75, 23);
-            this.btnAllClear.TabIndex = 4;
-            this.btnAllClear.Text = "すべてクリア";
-            this.btnAllClear.UseVisualStyleBackColor = true;
-            this.btnAllClear.Click += new System.EventHandler(this.BtnAllClear_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -171,6 +172,7 @@
             this.Controls.Add(this.rightPanel);
             this.Controls.Add(this.previewBox);
             this.Controls.Add(this.mainMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "Ebi";

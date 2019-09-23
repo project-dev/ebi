@@ -95,12 +95,49 @@ namespace Ebi
                 for (int i = 1; i < sheet.LastRowNum; i++)
                 {
                     row = sheet.GetRow(i);
-                    var targetFlag = row.Cells[printIdxPos].StringCellValue;
-                    var name1 = row.Cells[printNamePos].StringCellValue;
-                    var name2 = row.Cells[printNamePos + 1].StringCellValue;
-                    var price = row.Cells[printPricePos].StringCellValue;
+                    String targetFlag = "";
+                    String name1 = "";
+                    String name2 = "";
+                    String price = "";
+                    if (row.Cells[printIdxPos].CellType == CellType.String)
+                    {
+                        targetFlag = row.Cells[printIdxPos].StringCellValue;
+                    }
+                    if (row.Cells[printNamePos].CellType == CellType.String)
+                    {
+                        name1 = row.Cells[printNamePos].StringCellValue;
+                    }
+                    if (row.Cells[printNamePos+1].CellType == CellType.String)
+                    {
+                        name2 = row.Cells[printNamePos + 1].StringCellValue;
+                    }
+                    if (row.Cells[printPricePos].CellType == CellType.String)
+                    {
+                        price = row.Cells[printPricePos].StringCellValue;
+                    }
+                    if (row.Cells[printPricePos].CellType == CellType.Formula)
+                    {
+                        switch (row.Cells[printPricePos].CachedFormulaResultType)
+                        {
+                            case CellType.String:
+                                price = row.Cells[printPricePos].StringCellValue;
+                                break;
+                            case CellType.Numeric:
+                                break;
+                            case CellType.Boolean:
+                                break;
+                            case CellType.Blank:
+                                break;
+                            case CellType.Error:
+                                break;
+                            case CellType.Unknown:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
 
-                    if(name1 == "" && name2 == "")
+                    if (name1 == "" && name2 == "")
                     {
                         // 名前な脚は無視
                         continue;
@@ -220,7 +257,8 @@ namespace Ebi
                     String price = (String)dataGrid.Rows[rowIdx].Cells["金額(漢字)"].Value;
                     if(price != "")
                     {
-                        price = "一、" + price + "圓也";
+//                        price = "一、" + price + "圓也";
+                        price = price + "圓也";
                     }
                     String name1 = (String)dataGrid.Rows[rowIdx].Cells["名前1"].Value;
                     String name2 = (String)dataGrid.Rows[rowIdx].Cells["名前2"].Value;
@@ -233,7 +271,6 @@ namespace Ebi
                         // name1の描画
                         graph.DrawString(name1, nameFont, brush, 1000, 64 + 200, sf);
 
-                        // 様の描画が必要
                     }
                     else
                     {
@@ -248,8 +285,9 @@ namespace Ebi
                         // name2の描画
                         graph.DrawString(name2, nameFont, brush, 600, name2Top, sf);
 
-                        // 様の描画が必要
                     }
+                    // 様の描画が必要
+                    graph.DrawString("様", nameFont, brush, 60, 3000, sf);
                 }
 
             }
@@ -339,6 +377,7 @@ namespace Ebi
                 loadExcel(xlsOpenDlg.FileName);
             }catch(Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 MessageBox.Show(this, "読み込もうとしたファイルが既にExcelで開かれている、または読み込もうとしたファイルに誤りがあります。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
