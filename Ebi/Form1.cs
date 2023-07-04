@@ -388,6 +388,10 @@ namespace Ebi
 
         private void DataGrid_SelectionChanged(object sender, EventArgs e)
         {
+            if(this.dataGrid.SelectedCells.Count == 0)
+            {
+                return;
+            }
             var selectedRowIndex = this.dataGrid.SelectedCells[0].RowIndex;
             updateImage();
 
@@ -397,7 +401,7 @@ namespace Ebi
         {
             for(int i = 0; i <  dataGrid.RowCount; i++)
             {
-                if((String)(dataGrid.Rows[i].Cells["名前1"].Value) != "" && (String)(dataGrid.Rows[i].Cells["名前2"].Value) != "")
+                if((String)(dataGrid.Rows[i].Cells["名前1"].Value) != "" || (String)(dataGrid.Rows[i].Cells["名前2"].Value) != "")
                 {
                     dataGrid.Rows[i].Cells["対象"].Value = true;
 
@@ -411,6 +415,24 @@ namespace Ebi
             {
                 dataGrid.Rows[i].Cells["対象"].Value = false;
             }
+
+        }
+
+        private void menuHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuVersion_Click(object sender, EventArgs e)
+        {
+            AboutDlg dlg = new AboutDlg();
+            dlg.ShowDialog(this);
+        }
+
+        private void menuHelp01_Click(object sender, EventArgs e)
+        {
+            HelpDlg dlg = new HelpDlg();
+            dlg.ShowDialog(this);
 
         }
     }

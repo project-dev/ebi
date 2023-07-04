@@ -35,6 +35,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuVersion = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp01 = new System.Windows.Forms.ToolStripMenuItem();
             this.previewBox = new System.Windows.Forms.PictureBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.rightPanel = new System.Windows.Forms.Panel();
@@ -52,7 +55,8 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
-            this.menuPrint});
+            this.menuPrint,
+            this.menuHelp});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(1020, 24);
@@ -95,6 +99,30 @@
             this.menuPrint.Text = "印刷(&P)";
             this.menuPrint.Click += new System.EventHandler(this.MenuPrint_Click);
             // 
+            // menuHelp
+            // 
+            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuVersion,
+            this.menuHelp01});
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(65, 20);
+            this.menuHelp.Text = "ヘルプ(H)";
+            this.menuHelp.Click += new System.EventHandler(this.menuHelp_Click);
+            // 
+            // menuVersion
+            // 
+            this.menuVersion.Name = "menuVersion";
+            this.menuVersion.Size = new System.Drawing.Size(237, 22);
+            this.menuVersion.Text = "バージョン情報";
+            this.menuVersion.Click += new System.EventHandler(this.menuVersion_Click);
+            // 
+            // menuHelp01
+            // 
+            this.menuHelp01.Name = "menuHelp01";
+            this.menuHelp01.Size = new System.Drawing.Size(237, 22);
+            this.menuHelp01.Text = "うまくファイルを取り込めない時は？";
+            this.menuHelp01.Click += new System.EventHandler(this.menuHelp01_Click);
+            // 
             // previewBox
             // 
             this.previewBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -110,8 +138,10 @@
             // 
             this.dataGrid.AllowUserToAddRows = false;
             this.dataGrid.AllowUserToDeleteRows = false;
+            this.dataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGrid.Location = new System.Drawing.Point(0, 32);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowTemplate.Height = 21;
@@ -204,6 +234,9 @@
         private System.Windows.Forms.OpenFileDialog xlsOpenDlg;
         private System.Windows.Forms.Button btnAllClear;
         private System.Windows.Forms.Button btnAllSelect;
+        private System.Windows.Forms.ToolStripMenuItem menuHelp;
+        private System.Windows.Forms.ToolStripMenuItem menuVersion;
+        private System.Windows.Forms.ToolStripMenuItem menuHelp01;
     }
 }
 
